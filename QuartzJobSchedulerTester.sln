@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzJobScheduler", "QuartzJobScheduler\QuartzJobScheduler.csproj", "{517B49E5-04E7-4F18-9BE0-0DD6ADA0A0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobSchedulerSvc", "JobSchedulerSvc\JobSchedulerSvc.csproj", "{7730CB03-2EBB-47CD-9BCD-97EAC69E7421}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JobSchedulerTestConsole", "JobSchedulerTestConsole\JobSchedulerTestConsole.csproj", "{C9DB018B-6C50-4554-A767-F61E4485BEB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuartzJobScheduler.Interfaces", "QuartzJobScheduler.Interfaces\QuartzJobScheduler.Interfaces.csproj", "{B94E88EA-0A3D-4279-8ABE-D59275FA849A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{517B49E5-04E7-4F18-9BE0-0DD6ADA0A0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517B49E5-04E7-4F18-9BE0-0DD6ADA0A0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517B49E5-04E7-4F18-9BE0-0DD6ADA0A0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517B49E5-04E7-4F18-9BE0-0DD6ADA0A0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7730CB03-2EBB-47CD-9BCD-97EAC69E7421}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7730CB03-2EBB-47CD-9BCD-97EAC69E7421}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7730CB03-2EBB-47CD-9BCD-97EAC69E7421}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7730CB03-2EBB-47CD-9BCD-97EAC69E7421}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9DB018B-6C50-4554-A767-F61E4485BEB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9DB018B-6C50-4554-A767-F61E4485BEB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9DB018B-6C50-4554-A767-F61E4485BEB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9DB018B-6C50-4554-A767-F61E4485BEB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B94E88EA-0A3D-4279-8ABE-D59275FA849A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B94E88EA-0A3D-4279-8ABE-D59275FA849A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B94E88EA-0A3D-4279-8ABE-D59275FA849A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B94E88EA-0A3D-4279-8ABE-D59275FA849A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
