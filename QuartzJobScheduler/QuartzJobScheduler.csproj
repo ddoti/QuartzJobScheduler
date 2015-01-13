@@ -66,15 +66,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Services\GenericWebClient.cs" />
     <Compile Include="ScheduleEngine.cs" />
-    <Compile Include="JobManager.cs" />
     <Compile Include="Services\JobManagementService.cs" />
-    <Compile Include="Services\JobManagementClient.cs" />
-    <Compile Include="Jobs\CommandLineJob.cs" />
-    <Compile Include="Jobs\CustomJob.cs" />
-    <Compile Include="JobRunner.cs" />
-    <Compile Include="Jobs\LogMessageJob.cs" />
+    <Compile Include="QuartzJobRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\JobManagerService.cs" />
   </ItemGroup>

@@ -34,35 +34,35 @@ namespace QuartzJobScheduler
 
 		public void ScheduleCustomJob(JobInfo job)
 		{
-			IJobDetail jobDetail = JobBuilder.Create<JobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
 			ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
 		public void ScheduleDailyJob(JobInfo job)
 		{
-			IJobDetail jobDetail = JobBuilder.Create<JobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
 			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInHours(24).RepeatForever()).Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
 		public void ScheduleHourlyJob(JobInfo job, int hourDelay)
 		{
-			IJobDetail jobDetail = JobBuilder.Create<JobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
 			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInHours(hourDelay).RepeatForever()).Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
 		public void ScheduleMinuteJob(JobInfo job, int minuteDelay)
 		{
-			IJobDetail jobDetail = JobBuilder.Create<JobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
 			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInMinutes(minuteDelay).RepeatForever()).Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
 		public void QueueJob(JobInfo job)
 		{
-			IJobDetail jobDetail = JobBuilder.Create<JobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
 			ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}

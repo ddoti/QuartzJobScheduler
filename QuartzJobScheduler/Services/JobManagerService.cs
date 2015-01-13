@@ -33,7 +33,7 @@ namespace QuartzJobScheduler.Services
 
 		public JobStatus RunNow(ICustomJob job)
 		{
-			var jobRunner = new JobRunner();
+			var jobRunner = new QuartzJobRunner();
 			return jobRunner.Execute(job);
 		}
 

@@ -1,8 +1,10 @@
-﻿using Quartz;
+﻿using QuartzJobScheduler.Jobs;
 
 namespace QuartzJobScheduler
 {
-	public interface IJobRunner : IJob
+	public interface IJobRunner
 	{
+		void Execute(IJobInfo jobInfo);
+		JobStatus Execute(ICustomJob job);
 	}
 }

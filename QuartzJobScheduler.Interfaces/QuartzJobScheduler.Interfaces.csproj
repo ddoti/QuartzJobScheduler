@@ -30,8 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Quartz">
-      <HintPath>..\lib\Quartz.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -47,14 +47,20 @@
   <ItemGroup>
     <Compile Include="IJobManager.cs" />
     <Compile Include="IJobRunner.cs" />
-    <Compile Include="IScheduleEngine.cs" />
+    <Compile Include="JobManager.cs" />
+    <Compile Include="JobRunner.cs" />
     <Compile Include="JobStatus.cs" />
+    <Compile Include="Jobs\CommandLineJob.cs" />
+    <Compile Include="Jobs\CustomJob.cs" />
     <Compile Include="Jobs\ICustomJob.cs" />
     <Compile Include="Jobs\IJobInfo.cs" />
     <Compile Include="Jobs\JobInfo.cs" />
+    <Compile Include="Jobs\LogMessageJob.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GenericWebClient.cs" />
     <Compile Include="Services\IJobManagementService.cs" />
     <Compile Include="Services\IJobManagerService.cs" />
+    <Compile Include="Services\JobManagementClient.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

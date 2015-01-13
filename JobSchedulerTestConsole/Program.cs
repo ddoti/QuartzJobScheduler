@@ -12,10 +12,11 @@ namespace JobSchedulerTestConsole
 
 			//JobManager.RunNow(job);
 			//JobManager.QueueJob(job);
+			var manager = new JobManager();
 
 			var dumb = new DumbJob();
-			JobManager.Instance.RunNow(dumb);
-			JobManager.Instance.QueueJob(dumb);
+			manager.RunNow(dumb);
+			manager.QueueJob(dumb);
 
 			Console.WriteLine("Hit ENTER to continue.");
 			//Console.ReadLine();

@@ -7,6 +7,11 @@ using Quartz.Impl;
 
 namespace QuartzJobScheduler.Helpers
 {
+	public interface IScheduleEngine
+	{
+		IScheduler Scheduler { get; }
+	}
+
 	public class ScheduleEngine : IScheduleEngine
 	{
 		private IScheduler _scheduler;
