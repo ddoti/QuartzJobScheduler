@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.ServiceModel;
 using QuartzJobScheduler.Jobs;
 
 namespace QuartzJobScheduler.Services
@@ -16,15 +17,18 @@ namespace QuartzJobScheduler.Services
 		void ScheduleCustomJob(JobInfo job);
 
 		[OperationContract]
-		void ScheduleDailyJob(JobInfo job);
+		void ScheduleDailyJob(JobInfo job, int limit);
 
 		[OperationContract]
-		void ScheduleHourlyJob(JobInfo job, int hourDelay);
+		void ScheduleJobWithHourlyInterval(JobInfo job, int hourDelay, int limit);
 
 		[OperationContract]
-		void ScheduleMinuteJob(JobInfo job, int minuteDelay);
+		void ScheduleJobWithMinuteInterval(JobInfo job, int minuteDelay, int limit);
 
 		[OperationContract]
 		void QueueJob(JobInfo job);
+
+		[OperationContract]
+		void QueueJobWithDelay(JobInfo job, TimeSpan delay);
 	}
 }

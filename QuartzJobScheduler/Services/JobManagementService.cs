@@ -39,24 +39,24 @@ namespace QuartzJobScheduler
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
-		public void ScheduleDailyJob(JobInfo job)
+		public void ScheduleDailyJob(JobInfo job, int limit)
 		{
 			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
-			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInHours(24).RepeatForever()).Build();
+			ITrigger trigger = SimpleRepeatTriggerBuilder(TriggerBuilder.Create().StartNow(), (x) => x.WithIntervalInHours(24), limit);
+			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger); throw new NotImplementedException();
+		}
+
+		public void ScheduleJobWithHourlyInterval(JobInfo job, int hourDelay, int limit)
+		{
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			ITrigger trigger = SimpleRepeatTriggerBuilder(TriggerBuilder.Create().StartNow(), (x) => x.WithIntervalInHours(hourDelay), limit);
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
-		public void ScheduleHourlyJob(JobInfo job, int hourDelay)
+		public void ScheduleJobWithMinuteInterval(JobInfo job, int minuteDelay, int limit)
 		{
 			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
-			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInHours(hourDelay).RepeatForever()).Build();
-			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
-		}
-
-		public void ScheduleMinuteJob(JobInfo job, int minuteDelay)
-		{
-			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
-			ITrigger trigger = TriggerBuilder.Create().StartNow().WithSimpleSchedule(x => x.WithIntervalInMinutes(minuteDelay).RepeatForever()).Build();
+			ITrigger trigger = SimpleRepeatTriggerBuilder(TriggerBuilder.Create().StartNow(), (x) => x.WithIntervalInMinutes(minuteDelay), limit);
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
 
@@ -66,5 +66,26 @@ namespace QuartzJobScheduler
 			ITrigger trigger = TriggerBuilder.Create().StartNow().Build();
 			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
 		}
+
+		public void QueueJobWithDelay(JobInfo job, TimeSpan delay)
+		{
+			var startTime = DateTime.Now.Add(delay);
+			IJobDetail jobDetail = JobBuilder.Create<QuartzJobRunner>().UsingJobData("JobInfo", job.ToString()).Build();
+			ITrigger trigger = TriggerBuilder.Create().StartAt(startTime).Build();
+			ScheduleEngine.Instance.Scheduler.ScheduleJob(jobDetail, trigger);
+		}
+
+
+		#region private methods
+
+
+		private ITrigger SimpleRepeatTriggerBuilder(TriggerBuilder builder, Func<SimpleScheduleBuilder, SimpleScheduleBuilder> func, int limit)
+		{
+			if (limit <= 0)
+				return builder.WithSimpleSchedule(x => func(x).RepeatForever()).Build();
+			return builder.WithSimpleSchedule(x => func(x).WithRepeatCount(limit)).Build();
+		}
+
+		#endregion
 	}
 }
