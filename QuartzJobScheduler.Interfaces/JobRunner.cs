@@ -24,7 +24,7 @@ namespace QuartzJobScheduler
 
 		public void Execute(IJobInfo jobInfo)
 		{
-			Console.WriteLine("Executing Job - " + jobInfo.Name);
+			Console.WriteLine("{0} - Executing Job - {1}", DateTime.Now.ToLongTimeString(), jobInfo.Name);
 
 			ICustomJob job = null;
 			AppDomain jobDomain = null;
@@ -38,7 +38,7 @@ namespace QuartzJobScheduler
 			}
 			catch (Exception ex)
 			{
-				Console.WriteLine("Error: Failed to job type from assembly. JobType: {0} Assembly: {1}", jobInfo.JobType, jobInfo.AssemblyName);
+				Console.WriteLine("{0} - Error: Failed to job type from assembly. JobType: {1} Assembly: {2}", DateTime.Now.ToLongTimeString(), jobInfo.JobType, jobInfo.AssemblyName);
 			}
 
 			Execute(job);
@@ -73,7 +73,7 @@ namespace QuartzJobScheduler
 
 			var end = DateTime.Now - start;
 
-			Console.WriteLine("Finished Executing Job ({0}) : {1} - {2}s", job.JobName, status, end.TotalSeconds);
+			Console.WriteLine("{3} - Finished Executing Job ({0}) : {1} - {2}s", job.JobName, status, end.TotalSeconds, DateTime.Now.ToLongTimeString());
 			return status;
 		}
 	}
